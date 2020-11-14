@@ -52,7 +52,8 @@
       });
 
       socket.on('message', (msg) => {
-        $('#messages').append($('<li>').text(username+msg));
+        $('#messages').append($('<li>').text(msg));
+          
 
       })
     </script>

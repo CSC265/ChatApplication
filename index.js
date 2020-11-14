@@ -17,23 +17,22 @@ app.get('/', (req, res) => {
 });
 
 let users = {};
-// let username = prompt("Enter username: ");
 
 io.on('connection', function (socket) {
-        // userID = socket.id;
-        // users[socket.id] = username;
+
         socket.on('username', (username)=>{
-           let user = username;
-           users[socket.id] = user;
+        //    let user = username;
+           users[socket.id] = username;
+           io.emit('message', `${username} entered the chat`)
         })
         
-        username = users[socket.id];
+        // username = users[socket.id];
 
         console.log(`Socket ${socket.id} connected`);
         socket.on('message', (msg) => {
             username = users[socket.id];
             console.log(`${username}: ${msg}`);
-            io.emit('message', username);
-            io.emit('message',msg);
+            io.emit('message', `${username}: ${msg}`);
+            // io.emit('message',msg);
         });
     })
