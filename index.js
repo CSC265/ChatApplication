@@ -21,18 +21,14 @@ let users = {};
 io.on('connection', function (socket) {
 
         socket.on('username', (username)=>{
-        //    let user = username;
            users[socket.id] = username;
            io.emit('message', `${username} entered the chat`)
         })
-        
-        // username = users[socket.id];
 
         console.log(`Socket ${socket.id} connected`);
         socket.on('message', (msg) => {
             username = users[socket.id];
             console.log(`${username}: ${msg}`);
             io.emit('message', `${username}: ${msg}`);
-            // io.emit('message',msg);
         });
     })
