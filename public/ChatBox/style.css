@@ -23,16 +23,21 @@ html{
     color: black;
     font-family: 'lobster';
     z-index: -1;
-    
 
+}
+
+.ChatBox .room-name {
+    margin-top: 100px;
 }
 
 .chatty{
 
     position: relative;
+    margin-top: 20px;
     left: 55px;
     bottom: 82px;
     color: white;
+    padding: none;
     
 }
 
@@ -67,10 +72,12 @@ html{
 
     position: absolute;
     width: 200px;
-    height: 81px;
+    height: 90px;
     background-color: rgb(57, 123, 197);
     top: 618px;
     border-top: 1px solid black;
+    padding: 0;
+
     
 }
 
@@ -78,7 +85,7 @@ html{
 
     position: absolute;
     width: 1200px;
-    height: 78px;
+    height: 90px;
     left: 200px;
     top: 618px;
     background-color: lightgray;
@@ -97,13 +104,14 @@ html{
     bottom: 629px;
     background-color: lightgray;
     border-bottom: 1px solid black;
+    margin-top: 40px;
     
 }
 .btn{
 
     position: absolute;
     left: 50px;
-    top: 635px;
+    top: 625px;
     text-decoration: none;
     border: none;
     background-color: rgb(255, 255, 255);

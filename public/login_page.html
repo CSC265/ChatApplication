@@ -83,18 +83,18 @@
         let roomName;
         let title;
 
-        if (window.location.search.includes('physics')) {
-          roomName = 'physics';
+        if (window.location.search.includes('Room1')) {
+          roomName = 'Room 1';
           //console.log(roomName);
-          title = document.getElementById("room").innerHTML = "Physics";
+          title = document.getElementById("room").innerHTML = "Room 1";
         }
-        else if (window.location.search.includes('maths')) {
-          roomName = 'maths';
-          title = document.getElementById("room").innerHTML = "Maths";
+        else if (window.location.search.includes('Room2')) {
+          roomName = 'Room 2';
+          title = document.getElementById("room").innerHTML = "Room 2";
         }
-        else if (window.location.search.includes('chemistry')) {
-          roomName = 'chemistry';
-          title = document.getElementById("room").innerHTML = "Chemistry";
+        else if (window.location.search.includes('Room3')) {
+          roomName = 'Room 3';
+          title = document.getElementById("room").innerHTML = "Room 3";
         }
         
         let username = prompt("Enter username: ");

@@ -1,9 +1,9 @@
 //server
 //Note: function parameters MUST match between server-side and client-side
-//i.e. 'message' and 'another event'
+
 
 const path = require('path');
-const express = require('express')
+const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
