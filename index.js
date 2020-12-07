@@ -23,11 +23,16 @@ app.get('/', (req, res) => {
 let users = {};
 
 io.on('connection', socket => {
+        socket.on('join-room', (data) => {
+            users[socket.id] = data[1];
+            console.log(data[1]);
+            socket.join(data[0]);
+            socket.emit('message', `Welcome to the ${data[2]} chatroom!`);
+        });
 
-        socket.on('username', (username)=>{
-           users[socket.id] = username;
-           io.emit('message', `${username} entered the chat`)
-
+        socket.on('username', (data2)=>{ 
+            users[socket.id] = data2[0];
+            io.emit('message', `${data2[0]} entered the chat`)
         })
 
         console.log(`Socket ${socket.id} connected`);
@@ -36,4 +41,5 @@ io.on('connection', socket => {
             console.log(`${username}: ${msg}`);
             io.emit('message', `${username}: ${msg}`);
         });
-    })
+
+    });
