@@ -103,10 +103,10 @@
         let data;
         let data2;
         socket.emit('join-room', data = [roomName, username, title]);
-        socket.emit('username', data2 = [username, roomName]);
         
         $('form').submit(() => {
-          socket.emit('message', $('#m').val());
+          let data3 = [roomName, username, $('#m').val()]
+          socket.emit('message', data3);
           $('#m').val('');
           return false;
         });

@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const port = 3000;
+const port = 3001;
 const prompt = require('prompt-sync')();
 
 server.listen(port, () => {
@@ -24,22 +24,17 @@ let users = {};
 
 io.on('connection', socket => {
         socket.on('join-room', (data) => {
-            users[socket.id] = data[1];
-            console.log(data[1]);
-            socket.join(data[0]);
-            socket.emit('message', `Welcome to the ${data[2]} chatroom!`);
+            users[socket.id] = [data[0],data[1],data[2]];
+            socket.join(data[0])
+            
+
+            socket.emit('message', `Welcome to the ${users[socket.id][0]} chatroom!`);
+            socket.to(users[socket.id][0]).emit('message', `${users[socket.id][1]} entered the chat`);
         });
 
-        socket.on('username', (data2)=>{ 
-            users[socket.id] = data2[0];
-            io.emit('message', `${data2[0]} entered the chat`)
-        })
-
         console.log(`Socket ${socket.id} connected`);
-        socket.on('message', (msg) => {
-            let username = users[socket.id];
-            console.log(`${username}: ${msg}`);
-            io.emit('message', `${username}: ${msg}`);
+        socket.on('message', (data) => {
+            io.to(data[0]).emit('message', `${data[1]}: ${data[2]}`);
         });
 
     });
