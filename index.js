@@ -1,5 +1,3 @@
-//server
-//Note: function parameters MUST match between server-side and client-side
 
 
 const path = require('path');
